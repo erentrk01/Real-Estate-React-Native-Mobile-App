@@ -13,15 +13,19 @@ const HouseItem = () => {
 			<Text style={styles.title}> Model S hey</Text>
 			<Text style={styles.subtitle}>Starting at $69,420</Text>
 		</View> 
-		<StyledButton
-		type="primary"
-		content={"Custom Order"} 
-		onPress={()=>{console.warn("Custom Order Pressed")}}/>
 
-		<StyledButton
-		type="secondary"
-		content={"Existing Inventory"}
-		onPress={()=>{console.warn("Existing Inventory Pressed")}}/>
+		<View style={styles.buttonsContainer}>
+			<StyledButton
+			type="primary"
+			content={"Custom Order"} 
+			onPress={()=>{console.warn("Custom Order Pressed")}}/>
+
+			<StyledButton
+			type="secondary"
+			content={"Existing Inventory"}
+			onPress={()=>{console.warn("Existing Inventory Pressed")}}/>
+		</View>
+
 
 	</View>);
 
