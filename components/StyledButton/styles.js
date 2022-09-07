@@ -1,19 +1,20 @@
 import { StyleSheet } from "react-native";
  const styles = StyleSheet.create({
-	
-	titles:{
-	  marginTop: '30%',
-	  width: '100%',
-	  alignItems: 'center'
+	container:{
+		width: '100%',
+		padding: 10
 	},
-  
-	title:{
-	  fontSize: 40,
-	  fontWeight: '600'
+	button: {
+		backgroundColor: '#e3e3e3',
+		height: 40,
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderRadius: 20
 	},
-	subtitle:{
-	  fontSize: 16,
-	  color: '#5c5e62'
+	text:{
+		fontSize: 12,
+		fontWeight: '600',
+		textTransform: 'uppercase'
 	}
 
 });

@@ -12,8 +12,16 @@ const HouseItem = () => {
 		<View style={styles.titles}>
 			<Text style={styles.title}> Model S hey</Text>
 			<Text style={styles.subtitle}>Starting at $69,420</Text>
-			<StyledButton/>
 		</View> 
+		<StyledButton
+		type="primary"
+		content={"Custom Order"} 
+		onPress={()=>{console.warn("Custom Order Pressed")}}/>
+
+		<StyledButton
+		type="secondary"
+		content={"Existing Inventory"}
+		onPress={()=>{console.warn("Existing Inventory Pressed")}}/>
 
 	</View>);
 
