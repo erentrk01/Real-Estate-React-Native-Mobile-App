@@ -1,5 +1,5 @@
 import React from "react";
-import { View,FlatList } from "react-native";
+import { View,FlatList,Dimensions} from "react-native";
 
 import HouseItem from "../HouseItem";
 import houses from "./houses";
@@ -15,6 +15,9 @@ const HouseList= () => {
 		<FlatList
 			data={houses}
 			renderItem={({item})=> <HouseItem house={item}/>}
+			snapToAlignment={'start'}
+			decelerationRate={'fast'}
+			snapToInterval={Dimensions.get('window').height}
 		/>
 	
 	</View>);
