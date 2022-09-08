@@ -4,7 +4,12 @@ import HouseItem from './components/HouseItem/index';
 export default function App() {
   return (
 	<View style={styles.container}>
-		<HouseItem/>
+		<HouseItem
+		name={"Model S"}
+		tagline={"Order Online for"}
+		taglineCTA={"Touchless Delivery"}
+		image={require('./assets/images/ModelS.jpeg')}
+		/>
 		<StatusBar style="auto" />
 	</View>
   );

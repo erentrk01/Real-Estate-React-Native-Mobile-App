@@ -5,13 +5,18 @@ import styles from "./styles";
 import StyledButton from "../StyledButton";
 
 
-const HouseItem = () => {
+const HouseItem = (props) => {
+	const { name, tagline,taglineCTA, image } = props;
+
 	return(
 	<View style={styles.houseContainer}>
-		<ImageBackground source={require('../../assets/images/ModelX.jpeg')} style={styles.image}/>
+		<ImageBackground source={image} style={styles.image}/>
 		<View style={styles.titles}>
-			<Text style={styles.title}> Model S hey</Text>
-			<Text style={styles.subtitle}>Starting at $69,420</Text>
+			<Text style={styles.title}>{name}</Text>
+			<Text style={styles.subtitle}>
+				{tagline}&nbsp;
+				<Text style={styles.subtitleCTA}>{taglineCTA}</Text>
+			</Text>
 		</View> 
 
 		<View style={styles.buttonsContainer}>

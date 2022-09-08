@@ -16,6 +16,9 @@ import { StyleSheet } from "react-native";
 	  fontSize: 40,
 	  fontWeight: '600'
 	},
+	subtitleCTA:{
+		textDecorationLine: 'underline'
+	},
 	subtitle:{
 	  fontSize: 16,
 	  color: '#5c5e62'
