@@ -18,6 +18,7 @@ const HouseList= () => {
 			snapToAlignment={'start'}
 			decelerationRate={'fast'}
 			snapToInterval={Dimensions.get('window').height}
+			showsVerticalScrollIndicator={false}
 		/>
 	
 	</View>);
