@@ -1,15 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View ,ImageBackground} from 'react-native';
-import HouseItem from './components/HouseItem/index';
+import { StyleSheet, Text, View } from 'react-native';
+
+import HouseList from './components/HouseList/index';
+
 export default function App() {
   return (
 	<View style={styles.container}>
-		<HouseItem
-		name={"Model S"}
-		tagline={"Order Online for"}
-		taglineCTA={"Touchless Delivery"}
-		image={require('./assets/images/ModelS.jpeg')}
-		/>
+		<HouseList></HouseList>
 		<StatusBar style="auto" />
 	</View>
   );
