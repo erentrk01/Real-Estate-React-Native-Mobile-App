@@ -1,6 +1,6 @@
 import { Stylesheet,Text,View,Dimensions, StyleSheet } from "react-native";
 import Svg,{Image} from "react-native-svg";
-import styles from "../Header/styles";
+import styles from "./styles";
 import StyledButton from "../StyledButton";
 
 let navigation;
@@ -25,12 +25,12 @@ let navigation;
 			</View>
 			<View style={styles.bottomContainer}>
 				<View style={styles.button}>
-				<StyledButton style={styles.btn} onPress={login} type="secondary" content={"Giriş Yap"} />
+				<StyledButton  onPress={login} type="secondary" content={"Giriş Yap"} />
 
 				</View>
 				<View style={styles.button} >
 
-					<StyledButton style={styles.btn} onPress={login} type="secondary" content={"Kayıt Ol"} />
+					<StyledButton onPress={login} type="secondary" content={"Kayıt Ol"} />
 				</View>
 			</View>
 		</View>
