@@ -1,5 +1,5 @@
-import { Stylesheet,Text,View,Dimensions,Image, StyleSheet } from "react-native";
-import Svg from "react-native-svg";
+import { Stylesheet,Text,View,Dimensions, StyleSheet } from "react-native";
+import Svg,{Image} from "react-native-svg";
 import styles from "../Header/styles";
 import StyledButton from "../StyledButton";
 
@@ -12,24 +12,26 @@ let navigation;
 //<StyledButton onPress={()=>navigation.navigate('AnimatedAuth')} type="primary" content={"Giriş Yap"} />
 		<View style={styles.container}>
 			<View style={StyleSheet.absoluteFill}>
-			<Svg width={width} height={height} viewBox="0 0 500 500" style={styles.svg}>
+			<Svg width={width} height={height}  style={styles.svg}>
 				<Image 
 				style={styles.image}
-				source={require("../../assets/images/login.jpeg")} 
+				href={require("../../assets/images/login.jpeg")} 
 				width={width}
 				height={height}
+				preserveAspectRatio="xMidYMid slice"
 				></Image>
+				
 			</Svg>
+			</View>
 			<View style={styles.bottomContainer}>
 				<View style={styles.button}>
-					<Text style={styles.buttonText}>Giriş Yap</Text>
+				<StyledButton style={styles.btn} onPress={login} type="secondary" content={"Giriş Yap"} />
 
 				</View>
 				<View style={styles.button} >
 
 					<StyledButton style={styles.btn} onPress={login} type="secondary" content={"Kayıt Ol"} />
 				</View>
-			</View>
 			</View>
 		</View>
 	)
