@@ -1,7 +1,7 @@
 export  const houses = [
 	{
 		name:"Family Home",
-		tagline:"Starting at $69,420",
+		tagline:"Starting at $219,420",
 		taglineCTA:"Oakland, CA",
 		image:require("../../assets/images/SolarRoof.jpeg"),
 	},
