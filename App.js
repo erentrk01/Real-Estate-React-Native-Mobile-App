@@ -1,17 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import Header from './components/Header';
 import HouseList from './components/HouseList/index';
+import AnimatedAuth from './components/Animated-Auth';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+	<NavigationContainer>
+		<Stack.Navigator>
+		<Stack.Screen name="AnimatedAuth" component={AnimatedAuth} options={{headerShown: false}} />
+			<Stack.Screen name="HouseList" component={HouseList} options={{headerShown: false}} />
 
-	<View style={styles.container}>
-		<Header></Header>
-		<HouseList></HouseList>
-		<StatusBar style="auto" />
-	</View>
+		</Stack.Navigator>
+
+	</NavigationContainer>
+
+	
   );
 }
 
