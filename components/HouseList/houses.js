@@ -1,28 +1,28 @@
 export  const houses = [
 	{
-		name:"Model S",
+		name:"Family Home",
 		tagline:"Starting at $69,420",
 		taglineCTA:"Touchless Delivery",
-		image:require("../../assets/images/ModelS.jpeg"),
+		image:require("../../assets/images/SolarRoof.jpeg"),
 	},
 	{
 		name:"Model 3",
 		tagline:"Order Online for",
 		taglineCTA:"Touchless Delivery",
-		image:require("../../assets/images/Model3.jpeg"),
+		image:require("../../assets/images/home2.jpeg"),
 
 	},
 	{
 		name:"Model X",
 		tagline:"Order Online for",
 		taglineCTA:"Touchless Delivery",
-		image:require("../../assets/images/ModelX.jpeg"),
+		image:require("../../assets/images/home3.jpg"),
 	},
 	{
 		name:"Model Y",
 		tagline:"Order Online for",
 		taglineCTA:"Touchless Delivery",
-		image:require("../../assets/images/ModelY.jpeg"),
+		image:require("../../assets/images/home4.jpeg"),
 	}
 ];
 
