@@ -7,7 +7,7 @@ import StyledButton from "../StyledButton";
 
 const HouseItem = (props) => {
 	const { name, tagline,taglineCTA, image } = props.house;
-
+	const { navigation } = props;
 
 	return(
 	<View style={styles.houseContainer}>
