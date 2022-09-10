@@ -112,7 +112,9 @@ let navigation;
 					<TextInput 
 					placeholder="Email" 
 					style={styles.textInput} 
-					placeholderTextColor={"black"}/>
+					placeholderTextColor={"black"}
+					
+					/>
 
 					{ isRegistering &&
 					<TextInput 
