@@ -21,6 +21,23 @@ let navigation;
 		}
 	});
 
+	const buttonAnimatedStyle = useAnimatedStyle(() => {
+		const interpolation = interpolate(imagePosition.value,[0,1],[250,1]);
+		return {
+			opacity:withTiming(imagePosition.value,{duration:500}),
+			transform:[
+				{translateY:withTiming(interpolation,{duration:1000})}
+			]
+		}
+	});
+
+	const closeBtnContainerStyle = useAnimatedStyle(() => {
+		const interpolation = interpolate(imagePosition.value,[0,1],[180,360]);
+		return {
+			opacity:withTiming(imagePosition.value  ? 1 :1,{duration:800}),
+			transform:[{rotate:withTiming(interpolation +'deg',{duration:1000})}]
+		}
+	});
 	const loginHandler = () => {
 		imagePosition.value = 0;
 
@@ -50,19 +67,19 @@ let navigation;
 				></Image>
 				
 			</Svg>
-			<View style={styles.closeBtnContainer} >
-				<Text style={styles.title}>X</Text>
-			</View>
+			<Animated.View style={[styles.closeBtnContainer,closeBtnContainerStyle]} >
+				<Text onPress={()=>imagePosition.value=1} style={styles.title}>X</Text>
+			</Animated.View>
 			</Animated.View>
 			<View style={styles.bottomContainer}>
-				<View style={styles.button}>
+				<Animated.View style={[styles.button,buttonAnimatedStyle]}>
 				<StyledButton  onPress={loginHandler} type="secondary" content={"Giriş Yap"} />
 
-				</View>
-				<View style={styles.button} >
+				</Animated.View>
+				<Animated.View style={[styles.button,buttonAnimatedStyle]} >
 
 					<StyledButton onPress={registerHandler} type="secondary" content={"Kayıt Ol"} />
-				</View>
+				</Animated.View>
 			{/*	<View style={styles.formContainer}>
 					<TextInput 
 					placeholder="Email" 
