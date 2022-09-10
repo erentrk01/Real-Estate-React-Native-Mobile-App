@@ -26,7 +26,10 @@ const {width, height} = Dimensions.get('window');
 		width:"90%",
 	},
 	formContainer:{
-		marginBottom:70
+		marginBottom:70,
+		zIndex:-1,
+		...StyleSheet.absoluteFill,
+		justifyContent:"center"
 	},
 	closeBtnContainer:{
 		height:40,

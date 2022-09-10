@@ -1,16 +1,23 @@
 import { Stylesheet,Text,View,Dimensions, StyleSheet, TextInput } from "react-native";
+import { useState } from "react";
 import Svg,{Image,Ellipse,ClipPath} from "react-native-svg";
 import styles from "./styles";
 import StyledButton from "../StyledButton";
-import Animated,{useSharedValue,useAnimatedStyle,interpolate,withTiming}from "react-native-reanimated";
+import Animated,{useSharedValue,useAnimatedStyle,interpolate,withTiming,withDelay,runOnJS,withSequence,withSpring}from "react-native-reanimated";
 
 let navigation;
 
 
  const AnimatedAuth = (props) => {
 	const {height,width} = Dimensions.get('window');
-	const login = () => props.navigation.navigate('HouseList');
+	const login = () => {
+		formBtnScale.value = withSequence(withSpring(1.1),withSpring(1.3),withSpring(1));
+		props.navigation.navigate('HouseList')};
 
+	const [isRegistering,setIsRegistering] = useState(false);
+	const [isLoggingIn,setIsLoggingIn] = useState(false);
+
+	const formBtnScale = useSharedValue(1);
 	const imagePosition = useSharedValue(1);
 	const imageAnimatedStyle = useAnimatedStyle(() => {
 		const interpolation = interpolate(imagePosition.value,[0,1],[-height/2,0]);
@@ -34,17 +41,38 @@ let navigation;
 	const closeBtnContainerStyle = useAnimatedStyle(() => {
 		const interpolation = interpolate(imagePosition.value,[0,1],[180,360]);
 		return {
-			opacity:withTiming(imagePosition.value  ? 1 :1,{duration:800}),
+			opacity:withTiming(imagePosition.value === 1 ? 0 :1,{duration:800}),
 			transform:[{rotate:withTiming(interpolation +'deg',{duration:1000})}]
+		}
+	});
+
+	const formAnimatedStyle = useAnimatedStyle(() => {
+		const interpolation = interpolate(imagePosition.value,[0,1],[0,1]);
+		return {
+			opacity: imagePosition.value === 0 ? withDelay(400,withTiming(1,{duration:800})) : withTiming(0,{duration:300}),
+			transform:[
+				{translateY:withTiming(interpolation,{duration:1000})}
+			]
+		}
+	});
+
+	const formBtnAnimatedStyle = useAnimatedStyle(() => {
+		return{
+			transform:[{scale:formBtnScale.value}]
 		}
 	});
 	const loginHandler = () => {
 		imagePosition.value = 0;
-
+		if(isRegistering){
+			runOnJS(setIsRegistering)(false);
+		}
 	};
 
 	const registerHandler = () => {
 		imagePosition.value = 0;
+		if(!isRegistering){
+			runOnJS(setIsRegistering)(true);
+		}
 
 	};
 
@@ -80,25 +108,26 @@ let navigation;
 
 					<StyledButton onPress={registerHandler} type="secondary" content={"Kayıt Ol"} />
 				</Animated.View>
-			{/*	<View style={styles.formContainer}>
+				<Animated.View style={[styles.formContainer,formAnimatedStyle]}>
 					<TextInput 
 					placeholder="Email" 
 					style={styles.textInput} 
 					placeholderTextColor={"black"}/>
 
+					{ isRegistering &&
 					<TextInput 
 					style={styles.textInput}
 					placeholder="Full Name" 
-					placeholderTextColor={"black"}/>
+					placeholderTextColor={"black"}/>}
 
 					<TextInput 
 					style={styles.textInput}
 					placeholder="Password" 
 					placeholderTextColor={"black"}/>
-					<View style={styles.button} >
-						<StyledButton onPress={login} type="primary" content={"Kayıt Ol"} />
-					</View>
-				</View>*/}
+					<Animated.View style={[styles.button,formBtnAnimatedStyle]} >
+						<StyledButton onPress={login} type="primary" content={isRegistering ? "Register" : "Log in"} />
+					</Animated.View>
+				</Animated.View>
 			</View>
 		</View>
 	)
