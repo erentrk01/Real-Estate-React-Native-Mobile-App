@@ -1,5 +1,5 @@
 import { Stylesheet,Text,View,Dimensions, StyleSheet, TextInput } from "react-native";
-import Svg,{Image} from "react-native-svg";
+import Svg,{Image,Ellipse,ClipPath} from "react-native-svg";
 import styles from "./styles";
 import StyledButton from "../StyledButton";
 import Animated,{useSharedValue,useAnimatedStyle,interpolate,withTiming}from "react-native-reanimated";
@@ -26,17 +26,27 @@ let navigation;
 
 	};
 
+	const registerHandler = () => {
+		imagePosition.value = 0;
+
+	};
+
+
 	return(
 //<StyledButton onPress={()=>navigation.navigate('AnimatedAuth')} type="primary" content={"Giriş Yap"} />
 		<View style={styles.container}>
-			<Animated.View style={StyleSheet.absoluteFill}>
-			<Svg width={width} height={height}  style={styles.svg}>
+			<Animated.View style={[StyleSheet.absoluteFill,imageAnimatedStyle]}>
+			<Svg width={width} height={height +100}  style={styles.svg}>
+				<ClipPath id="clip">
+					<Ellipse  cx={width/2} rx={width} ry={height  +100} />
+				</ClipPath>
 				<Image 
 				style={styles.image}
-				href={require("../../assets/images/login.jpeg")} 
-				width={width}
-				height={height}
+				href={require("../../assets/images/login-background.jpg")} 
+				width={width +100}
+				height={height +100}
 				preserveAspectRatio="xMidYMid slice"
+				clipPath="url(#clip)"
 				></Image>
 				
 			</Svg>
@@ -46,12 +56,12 @@ let navigation;
 			</Animated.View>
 			<View style={styles.bottomContainer}>
 				<View style={styles.button}>
-				<StyledButton  onPress={login} type="secondary" content={"Giriş Yap"} />
+				<StyledButton  onPress={loginHandler} type="secondary" content={"Giriş Yap"} />
 
 				</View>
 				<View style={styles.button} >
 
-					<StyledButton onPress={login} type="secondary" content={"Kayıt Ol"} />
+					<StyledButton onPress={registerHandler} type="secondary" content={"Kayıt Ol"} />
 				</View>
 			{/*	<View style={styles.formContainer}>
 					<TextInput 

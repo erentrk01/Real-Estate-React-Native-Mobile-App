@@ -31,6 +31,7 @@ const {width, height} = Dimensions.get('window');
 	closeBtnContainer:{
 		height:40,
 		width:40,
+		top:-20,
 		justifyContent:"center",
 		alignSelf:"center",
 		shadowColor:"#000",
