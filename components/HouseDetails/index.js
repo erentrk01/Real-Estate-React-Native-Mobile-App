@@ -24,7 +24,7 @@ const HouseDetails =() => {
 		borderBottomWidth: 0.3,
 		}}/>
 		<View style={styles.estateType}>
-			<Text style={styles.estateTypeText}>Emlak > Konut > Satılık> Müstakil</Text>
+			<Text style={styles.estateTypeText}>Emlak > Konut > Satılık > Müstakil</Text>
 		</View>
 		<View style={styles.memberAddress}>
 			<Text style={styles.memberAddressText}>Ankara,Çankaya,Ümit Mah.</Text>
