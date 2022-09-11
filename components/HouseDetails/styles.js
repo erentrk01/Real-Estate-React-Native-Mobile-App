@@ -10,6 +10,9 @@ const styles = StyleSheet.create({
 	member:{
 		justifyContent: 'center',
 		alignItems: 'center',
+	},
+	name:{
+		fontWeight:'bold'
 	}
 
 });
