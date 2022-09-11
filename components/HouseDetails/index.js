@@ -7,25 +7,27 @@ import styles from "./styles";
 const HouseDetails =() => {
 
 	  return (
-	<View>
-		<View>
-			<Text style={styles.title}>HouseDetails title</Text>
+	<View style={styles.slideContainer}>
+		<View style={styles.title}>
+			<Text >2+1 Ara Kat Temiz</Text>
 		</View>
-		<View>
+		<View >
 			<ImageSlider/>
 		</View>
 		<View style={styles.member}>
 			<Text style={styles.name}>Eren Tarak</Text>
-			<Text style={styles.date}>Üyelik tarihi</Text>
-			<Text style={styles.address}>Üye adresi</Text>
+			<Text style={styles.memberDate}>Üyelik tarihi Şubat 2010</Text>
 		</View>
 		<View
 		style={{
 		borderBottomColor: 'grey',
 		borderBottomWidth: 0.3,
 		}}/>
-		<View>
-		
+		<View style={styles.estateType}>
+			<Text style={styles.estateTypeText}>Emlak > Konut > Satılık> Müstakil</Text>
+		</View>
+		<View style={styles.memberAddress}>
+			<Text style={styles.memberAddressText}>Ankara,Çankaya,Ümit Mah.</Text>
 		</View>
 	</View>
   );

@@ -1,18 +1,41 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-	container: {
-
+	slideContainer: {
+		top:80,
+	
 	},
 	title:{
-
+		alignItems: 'center',
 	},
 	member:{
 		justifyContent: 'center',
 		alignItems: 'center',
+		top:-10
+	},
+	memberDate:{
+		fontSize: 12,
+		opacity: 0.5
 	},
 	name:{
 		fontWeight:'bold'
+	},
+	estateType:{
+	
+		alignItems: 'center',
+		
+	},
+	estateTypeText:{
+		color:"blue",
+		opacity:0.7
+	},
+	memberAddress:{
+		alignItems: 'center',
+		opacity:0.5,
+
+	},
+	memberAddressText:{
+		fontSize:12
 	}
 
 });
