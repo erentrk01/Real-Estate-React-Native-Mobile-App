@@ -17,9 +17,10 @@ export default function App() {
   return (
 	<NavigationContainer>
 		<Stack.Navigator>
+			<Stack.Screen name="Detail" component={HouseDetails} options={{headerShown:false}}/>
 			<Stack.Screen name="AnimatedAuth" component={AnimatedAuth} options={{headerShown: false}} />
 			<Stack.Screen name="HouseList" component={HouseList} options={{headerShown: false}} />
-			<Stack.Screen name="Detail" component={HouseDetails} options={{headerShown:false}}/>
+
 		</Stack.Navigator>
 
 	</NavigationContainer>
