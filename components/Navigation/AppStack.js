@@ -11,7 +11,7 @@ import HouseList from "../HouseList";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Profile from "../Screens/Profile";
 import PutUpForSale from "../Screens/PutUpForSale";
-import { CustomDrawer} from "../CustomDrawer/index";
+
 const Drawer = createDrawerNavigator();
 
 
@@ -20,7 +20,7 @@ const AppStack = () => {
 
 			<Drawer.Navigator
 			 screenOptions={{
-				headerShown:false,
+				headerShown:true,
 				drawerActiveBackgroundColor: '#aa18ea',
 				drawerActiveTintColor: '#fff',
 				drawerLabelStyle: {
