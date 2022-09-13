@@ -1,8 +1,8 @@
 import { Stylesheet,Text,View,Dimensions, StyleSheet, TextInput } from "react-native";
 import { useState } from "react";
 import Svg,{Image,Ellipse,ClipPath} from "react-native-svg";
-import styles from "./styles";
-import StyledButton from "../StyledButton";
+import styles from "./styles";""
+import StyledButton from "../../common/StyledButton";
 import Animated,{useSharedValue,useAnimatedStyle,interpolate,withTiming,withDelay,runOnJS,withSequence,withSpring}from "react-native-reanimated";
 
 let navigation;
