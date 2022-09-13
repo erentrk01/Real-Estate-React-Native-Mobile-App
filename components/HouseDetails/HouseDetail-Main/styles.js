@@ -37,6 +37,9 @@ const styles = StyleSheet.create({
 	},
 	memberAddressText:{
 		fontSize:12
+	},
+	tab:{
+		marginVertical: 10,
 	}
 
 });
