@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 
 	},
 	headerViewActive:{
-		backgroundColor:'yellow'
+		backgroundColor:'#FFCE33'
 	},
 	header:{
 		flexDirection: 'row',
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 	},
 	border:{
 		borderBottomWidth: 1,
-		borderBottomColor: 'yellow',
+		borderBottomColor: '#FFCE33',
 	}
 })
 
