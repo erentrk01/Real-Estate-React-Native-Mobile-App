@@ -2,6 +2,7 @@ import React from "react";
 import { View,Text} from "react-native";
 import Tab from "../../../common/Tab";
 import ImageSlider from "../../ImageSlider/index";
+import HouseInfo from "../House-Features/HouseInfo";
 import styles from "./styles";
 
 
@@ -33,12 +34,14 @@ const HouseDetails =() => {
 		<View style={styles.tab}>
 			<Tab
 			data={[
-				{title:"İlan Bilgileri",content:<Text>Content1</Text>},
+				{title:"İlan Bilgileri",content:<HouseInfo/>},
 				{title:"Açıklama",content:<Text>Content2</Text>},
 				{title:"Konumu",content:<Text>Content3</Text>},
 			]}
 			/>
 		</View>
+
+
 	</View>
   );
 }

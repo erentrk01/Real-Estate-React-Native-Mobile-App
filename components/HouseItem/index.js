@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, ImageBackground } from "react-native";
 import styles from "./styles";
 
-import StyledButton from "../StyledButton";
+import StyledButton from "../../common/StyledButton";
 
 
 const HouseItem = (props) => {
