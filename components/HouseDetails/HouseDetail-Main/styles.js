@@ -2,11 +2,12 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
 	slideContainer: {
-		top:80,
-	
+		top:20,
+
 	},
 	title:{
 		alignItems: 'center',
+		width: "100%",
 	},
 	member:{
 		justifyContent: 'center',

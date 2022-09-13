@@ -5,7 +5,7 @@ import { View, Text} from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import HouseDetails from "../HouseDetails";
+import HouseDetails from "../HouseDetails/HouseDetail-Main/index";
 import HouseList from "../HouseList";
 
 import { createDrawerNavigator } from "@react-navigation/drawer";

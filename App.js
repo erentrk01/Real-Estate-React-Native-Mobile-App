@@ -9,7 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Header from './components/Header';
 import HouseList from './components/HouseList/index';
 import AnimatedAuth from './components/Animated-Auth';
-import HouseDetails from './components/HouseDetails';
+import HouseDetails from './components/HouseDetails/HouseDetail-Main/index';
 
 import AppStack from './components/Navigation/AppStack';
 

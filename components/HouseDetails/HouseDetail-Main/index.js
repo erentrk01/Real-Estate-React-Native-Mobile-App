@@ -1,6 +1,6 @@
 import React from "react";
 import { View,Text} from "react-native";
-import ImageSlider from "../ImageSlider/index";
+import ImageSlider from "../../ImageSlider/index";
 import styles from "./styles";
 
 
