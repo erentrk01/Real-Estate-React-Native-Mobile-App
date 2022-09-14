@@ -19,7 +19,7 @@ const Tab = ({data})=>{
 			<View style={styles.content}>
 				{
 					data.map((item,index)=>{
-					if (isActiveTab === index) return <Text>{item.content}</Text> 
+					if (isActiveTab === index) return <Text key={index}>{item.content}</Text> 
 					})
 				}
 			</View>

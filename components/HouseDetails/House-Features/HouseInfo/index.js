@@ -1,31 +1,51 @@
 import React from "react"
-import {View,ScrollView} from "react-native"
+import {View,ScrollView,Text,Dimensions} from "react-native"
+import { FlatList } from "react-native-gesture-handler";
 
-import { Table, Row, Rows} from 'react-native-table-component';
+
 import styles from "./styles";
+
+
+
 const HouseInfo =(props) => {
-	const data = [
-        ['Fiyat', '2.500.000 TL'],
-        ['İlan No', 'gfg5'],
-        ['Oda Sayısı', '4']
+
+ const data=[
+	{feature:"Fiyat",value:"$1,000,000"},
+	{feature:"Oda Sayısı",value:"4"},
+	{feature:"Banyo Sayısı",value:"1"},
+	{feature:"Isınma",value:"gaz sobası"},
+	{feature:"Odas Sayısı",value:"4"},
+	{feature:"Bansssyo Sayısı",value:"1"},
+	{feature:"Isssınma",value:"gaz sobası"},
+	{feature:"Odssa Sayısı",value:"4"},
+	{feature:"Odsa Sayısı",value:"4"},
+	{feature:"Bansyo Sayısı",value:"1"},
+	{feature:"Isısnma",value:"gaz sobası"},
  ];
 
 	return(
 		<View style={styles.container}>
-			<ScrollView vertical={true}>
-			<Table >
-                {
-                  data.map((dataRow, index) => (
-                    <Row
-					widthArr={[400, 800]}
-                      key={index}
-                      data={dataRow}
-                      style={[styles.row]}
-                    />
-                  ))
-                }
-              </Table>
-			</ScrollView>
+
+
+				<FlatList
+					keyExtractor={item=>item.feature}
+					showsVerticalScrollIndicator={false}
+					contentContainerStyle={{
+				 flexGrow: 1, }}
+					data={data}
+
+					renderItem={({item,index})=> (
+						<View>
+						<View  style={styles.row} key={index}>
+							<Text style={styles.Text} >{item.feature}</Text>
+							<Text style={styles.Text}>{item.value}</Text>
+						</View>
+						<View style={styles.seperator}/>
+						</View>
+
+					)}
+					/>
+
 
 	  </View>
 	)
