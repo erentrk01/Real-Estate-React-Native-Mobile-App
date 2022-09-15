@@ -16,6 +16,9 @@ const styles = StyleSheet.create({
 		marginVertical: 5,
 		borderBottomColor: '#FFCE33',
 		borderBottomWidth: 2
+	},
+	row:{
+		color:'black'
 	}
 })
 

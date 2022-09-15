@@ -1,8 +1,12 @@
 import React from "react";
-import { View,Text} from "react-native";
+import { View,Text,FlatList,TouchableOpacity} from "react-native";
 import { TextInput } from "react-native-gesture-handler";
+import CategoryTemplate from "../../../common/CategoryTemplate";
+import CategorySelect from "../CategorySelect";
 import styles from "./styles";
 const PutUpForSale = () => {
+
+
 	return(
 
 		<View>
@@ -16,6 +20,10 @@ const PutUpForSale = () => {
 			<Text style={styles.header}>ADIM ADIM KATEGORİ SEÇİMİ</Text>
 			<View style={styles.seperator}></View>
 		</View>
+		<View style={styles.stepBy}>
+			<CategorySelect/>
+		</View>
+
 		</View>
 		
 	)
