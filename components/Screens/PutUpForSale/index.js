@@ -9,13 +9,17 @@ const PutUpForSale = () => {
 		<View>
 			<Text style={styles.header}>KELİME İLE KATEGORİ SEÇİMİ</Text>
 		</View>
+		
 			<TextInput style={styles.textInput}/>
 			<View style={styles.seperator}></View>
-
+		<View>
+			<Text style={styles.header}>ADIM ADIM KATEGORİ SEÇİMİ</Text>
+			<View style={styles.seperator}></View>
 		</View>
+		</View>
+		
 	)
 
-
-};
+}
 
 export default PutUpForSale;

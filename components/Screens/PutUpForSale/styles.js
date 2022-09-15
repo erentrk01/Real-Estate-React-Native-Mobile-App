@@ -3,7 +3,7 @@ const styles = StyleSheet.create({
 	header:{
 		fontWeight:'bold',
 		marginLeft:20,
-		marginTop:103
+		marginTop:10
 	},
 	textInput:{
 		height:40,
