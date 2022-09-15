@@ -1,5 +1,5 @@
 import React from "react";
-import { View,Text} from "react-native";
+import { View,Text,FlatList,Dimensions} from "react-native";
 import Tab from "../../../common/Tab";
 import ImageSlider from "../../ImageSlider/index";
 import HouseInfo from "../House-Features/HouseInfo";
@@ -40,7 +40,7 @@ const HouseDetails =() => {
 			]}
 			/>
 		</View>
-
+		
 
 	</View>
   );

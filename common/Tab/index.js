@@ -1,6 +1,6 @@
 import React,{Component,useState} from "react"
 import {Text,View} from "react-native"
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import styles from "./styles";
 const Tab = ({data})=>{
 	const [isActiveTab,setIsActiveTab] = useState(0);
@@ -16,6 +16,7 @@ const Tab = ({data})=>{
 				))}
 			</View>
 			<View style={styles.border}></View>
+
 			<View style={styles.content}>
 				{
 					data.map((item,index)=>{
@@ -23,6 +24,7 @@ const Tab = ({data})=>{
 					})
 				}
 			</View>
+
 
 		</View>
 	)

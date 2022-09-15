@@ -3,7 +3,8 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
 	slideContainer: {
 		top:20,
-
+		flex:1,
+		flexGrow:1
 	},
 	title:{
 		alignItems: 'center',

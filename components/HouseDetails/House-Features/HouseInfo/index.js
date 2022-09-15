@@ -27,12 +27,17 @@ const HouseInfo =(props) => {
 		<View style={styles.container}>
 
 
+			
 				<FlatList
-					keyExtractor={item=>item.feature}
+
 					showsVerticalScrollIndicator={false}
 					contentContainerStyle={{
-				 flexGrow: 1, }}
+					 flexGrow: 1,flex:1 }}
 					data={data}
+					snapToAlignment={'start'}
+					decelerationRate={'fast'}
+					snapToInterval={Dimensions.get('window').height}
+
 
 					renderItem={({item,index})=> (
 						<View>
@@ -43,8 +48,7 @@ const HouseInfo =(props) => {
 						<View style={styles.seperator}/>
 						</View>
 
-					)}
-					/>
+					)}/>
 
 
 	  </View>
