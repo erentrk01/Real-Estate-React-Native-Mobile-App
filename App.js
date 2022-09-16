@@ -12,6 +12,8 @@ import AnimatedAuth from './components/Animated-Auth';
 import HouseDetails from './components/HouseDetails/HouseDetail-Main/index';
 
 import AppStack from './components/Navigation/AppStack';
+import CategorySelect from './components/Screens/CategorySelect';
+import CategoryStack from './components/Navigation/CategoryStack';
 
 
 
@@ -21,12 +23,12 @@ export default function App() {
 	<NavigationContainer>
 
 			<AppStack/>
-
+	
 
 
 
 	</NavigationContainer>
-
+	
 	
   );
 }

@@ -1,21 +1,27 @@
-import { StyleSheet, Text, View,FlatList,TouchableOpacity } from 'react-native'
+/*import { StyleSheet, Text, View,FlatList,TouchableOpacity } from 'react-native'
 import React from 'react'
 
 export default function CategoryTemplate({subFilters}) {
-	console.log(subFilters);
-  return (
 
+	const subArray=[];
+	console.log(subFilters);
+	const setCategoryMain=(e)=>{
+		const filterName = e.target.value;
+		if(filterName =='Konut')
+		subArray.push('	Satılık','Kiralık');
+	}
+  return (
 	<View>
 			<View style={styles.stepBy}>
 			<FlatList
-				data={subFilters}
+				data={subArray.length == 0 ? subFilters :subArray}
 				contentContainerStyle={{
 					 flexGrow: 1 }}
 					 renderItem={({item,index})=> (
 						<View>
 						<View  style={styles.row} key={index}>
 							<TouchableOpacity>
-								<Text >{item.name}</Text>
+								<Text onPress={setCategoryMain}>{item.name}</Text>
 							</TouchableOpacity>
 						</View>
 						<View style={styles.seperator}/>
@@ -40,4 +46,4 @@ const styles = StyleSheet.create({
 	borderBottomColor: 'lightgrey',
 	borderBottomWidth: 1
 	}
-})
+})*/

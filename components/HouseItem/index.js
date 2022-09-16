@@ -1,13 +1,15 @@
 import React from "react";
 import { View, Text, ImageBackground } from "react-native";
 import styles from "./styles";
+import { useNavigation } from '@react-navigation/native';
 
 import StyledButton from "../../common/StyledButton";
 
 
 const HouseItem = (props) => {
 	const { name, tagline,taglineCTA, image } = props.house;
-	const { navigation } = props;
+	
+const navigation = useNavigation();
 
 	return(
 	<View style={styles.houseContainer}>
@@ -24,7 +26,7 @@ const HouseItem = (props) => {
 			<StyledButton
 			type="primary"
 			content={"Custom Order"} 
-			onPress={()=>{console.warn("Custom Order Pressed")}}/>
+			onPress={()=>navigation.navigate('Detail')}/>
 
 			<StyledButton
 			type="secondary"
