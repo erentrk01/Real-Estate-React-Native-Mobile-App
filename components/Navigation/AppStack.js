@@ -11,7 +11,7 @@ import HouseList from "../HouseList";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Profile from "../Screens/Profile";
 import PutUpForSale from "../Screens/PutUpForSale";
-import CategoryStack from "./CategoryStack";
+
 
 const Drawer = createDrawerNavigator();
 
@@ -61,16 +61,7 @@ const AppStack = () => {
 						}}
 					
 					/>
-						<Drawer.Screen 
-					name="CategoryStack" 
-					component={CategoryStack}
-					options={{
-						headerShown:false,
-						drawerIcon: ({color}) => (
-							<MaterialCommunityIcons name="sale" size={22} color={color} />),
-						}}
-					
-					/>
+						
 			</Drawer.Navigator>
 	
 
