@@ -11,6 +11,11 @@ import HouseList from "../HouseList";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Profile from "../Screens/Profile";
 import PutUpForSale from "../Screens/PutUpForSale";
+import Categories from "../Screens/Categories";
+import HouseItem from "../HouseItem";
+import Home from "../Screens/HomeScreen";
+
+
 
 
 const Drawer = createDrawerNavigator();
@@ -28,6 +33,14 @@ const AppStack = () => {
          			 marginLeft: -20,
           			fontSize: 15, },
 				}} >
+				<Drawer.Screen 
+					name="Home"
+					component={Home}
+					options={{
+						drawerIcon: ({color}) => (
+							<Ionicons name="home-outline" size={22} color={color} />
+						)}}
+					/>
 				<Drawer.Screen 
 					name="HouseList"
 					component={HouseList}
@@ -61,12 +74,18 @@ const AppStack = () => {
 						}}
 					
 					/>
+					<Drawer.Screen 
+					name="Categories" 
+					component={Categories}
+					options={{
+						drawerIcon: ({color}) => (
+							<MaterialCommunityIcons name="sale" size={22} color={color} />),
+						}}
+					
+					/>
+				
 						
 			</Drawer.Navigator>
-	
-
-	
-		
 	  );
 }
 

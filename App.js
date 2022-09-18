@@ -12,9 +12,8 @@ import AnimatedAuth from './components/Animated-Auth';
 import HouseDetails from './components/HouseDetails/HouseDetail-Main/index';
 
 import AppStack from './components/Navigation/AppStack';
-import CategorySelect from './components/Screens/CategorySelect';
-import CategoryStack from './components/Navigation/CategoryStack';
-import AuthStack from './components/Navigation/AuthStack';
+
+
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
@@ -23,7 +22,7 @@ export default function App() {
   return (
 	<NavigationContainer >
 	
-	<CategoryStack/>
+	<AppStack/>
 
 	
 			
