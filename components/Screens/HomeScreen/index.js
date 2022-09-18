@@ -3,6 +3,8 @@ import React from 'react'
 import Categories from '../Categories';
 import styles from './styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import HighlightRow from '../HighlightRow';
+
 
 const Home = () => {
   return (
@@ -24,9 +26,26 @@ const Home = () => {
 				size={20}
 				style={{marginVertical:5}}
 			/>
-
 	</View>
 	<Categories/>
+	<HighlightRow
+		id="1"
+		title="Konumuna Yakın Fırsatlar"
+		description="Yakınınızdaki fırsatları keşfedin"
+		featuredCategory="Konum"
+	/>
+		<HighlightRow
+		id="2"
+		title="Konumuna Yakın Fırsatlar"
+		description="Yakınınızdaki fırsatları keşfedin"
+		featuredCategory="Reklam"
+	/>
+		<HighlightRow
+		id="3"
+		title="Konumuna Yakın Fırsatlar"
+		description="Yakınınızdaki fırsatları keşfedin"
+		featuredCategory="Fiyat Düşürenler"
+	/>
 	</View>
   )
 }
