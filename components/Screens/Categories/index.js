@@ -8,7 +8,7 @@ import CategoryCard from './CategoryCard';
 	<View>
 		<ScrollView 
 			horizontal
-			contentContainerStyle={{paddingHorizontal:15,paddingTop:10}}
+			contentContainerStyle={{paddingHorizontal:5,paddingTop:10}}
 			showsHorizontalScrollIndicator={false} >
 
 			<CategoryCard 
