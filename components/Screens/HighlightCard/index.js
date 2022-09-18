@@ -15,7 +15,7 @@ const HighlightCard= ({
 	lat
 }) => {
   return (
-	<TouchableOpacity style={{backgroundColor:'white'}}>
+	<TouchableOpacity style={{backgroundColor:'white',marginRight:10}}>
 	 <Image
 	 	source={{uri:imgUrl}}
 		style={{width: 220, height: 150, borderRadius: 5,marginHorizontal:5}}

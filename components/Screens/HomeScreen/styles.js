@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
 	}
 	,
 	searchContainer:{
+
 		marginLeft:10,
 		backgroundColor:'#ebe6e6',
 		width:width/1.1,

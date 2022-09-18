@@ -4,11 +4,13 @@ import Categories from '../Categories';
 import styles from './styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HighlightRow from '../HighlightRow';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 const Home = () => {
   return (
-	<View>
+	<View style={{flex:1,flexGrow:1}}>
+
 	<View style={styles.container}>
 		<View style={styles.searchContainer}>
 			<Ionicons
@@ -27,6 +29,7 @@ const Home = () => {
 				style={{marginVertical:5}}
 			/>
 	</View>
+	<ScrollView>
 	<Categories/>
 	<HighlightRow
 		id="1"
@@ -46,6 +49,7 @@ const Home = () => {
 		description="Yakınınızdaki fırsatları keşfedin"
 		featuredCategory="Fiyat Düşürenler"
 	/>
+	</ScrollView>
 	</View>
   )
 }
