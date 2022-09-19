@@ -14,6 +14,7 @@ import PutUpForSale from "../Screens/PutUpForSale";
 import Categories from "../Screens/Categories";
 import HouseItem from "../HouseItem";
 import Home from "../Screens/HomeScreen";
+import Favorites from "../Screens/Favorites";
 
 
 
@@ -75,15 +76,16 @@ const AppStack = () => {
 					
 					/>
 					<Drawer.Screen 
-					name="Categories" 
-					component={Categories}
+					name="Favorites" 
+					component={Favorites}
 					options={{
 						drawerIcon: ({color}) => (
-							<MaterialCommunityIcons name="sale" size={22} color={color} />),
+							<Ionicons name="star" size={22} color={color} />),
 						}}
 					
 					/>
-				
+
+
 						
 			</Drawer.Navigator>
 	  );

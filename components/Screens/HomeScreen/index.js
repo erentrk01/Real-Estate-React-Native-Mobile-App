@@ -39,13 +39,13 @@ const Home = () => {
 	/>
 		<HighlightRow
 		id="2"
-		title="Konumuna Yakın Fırsatlar"
+		title="Fiyatı Düşürünler"
 		description="Yakınınızdaki fırsatları keşfedin"
 		featuredCategory="Reklam"
 	/>
 		<HighlightRow
 		id="3"
-		title="Konumuna Yakın Fırsatlar"
+		title="Reklam Alanlar"
 		description="Yakınınızdaki fırsatları keşfedin"
 		featuredCategory="Fiyat Düşürenler"
 	/>

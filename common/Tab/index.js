@@ -16,16 +16,18 @@ const Tab = ({data})=>{
 				))}
 			</View>
 			<View style={styles.border}></View>
-
+			
 			<View style={styles.content}>
+				<ScrollView>
 				{
 					data.map((item,index)=>{
 					if (isActiveTab === index) return <Text key={index}>{item.content}</Text> 
 					})
 				}
+				</ScrollView>
+
 			</View>
-
-
+			
 		</View>
 	)
 }
