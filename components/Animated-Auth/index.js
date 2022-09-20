@@ -1,4 +1,4 @@
-import { Stylesheet,Text,View,Dimensions, StyleSheet, TextInput } from "react-native";
+import {KeyboardAvoidingView,Text,View,Dimensions, StyleSheet, TextInput } from "react-native";
 import { useState } from "react";
 import Svg,{Image,Ellipse,ClipPath} from "react-native-svg";
 import styles from "./styles";""
@@ -99,7 +99,12 @@ let navigation;
 				<Text onPress={()=>imagePosition.value=1} style={styles.title}>X</Text>
 			</Animated.View>
 			</Animated.View>
+
 			<View style={styles.bottomContainer}>
+				<KeyboardAvoidingView 
+				behavior="position"
+				
+				>
 				<Animated.View style={[styles.button,buttonAnimatedStyle]}>
 				<StyledButton  onPress={loginHandler} type="secondary" content={"Giriş Yap"} />
 
@@ -108,7 +113,10 @@ let navigation;
 
 					<StyledButton onPress={registerHandler} type="secondary" content={"Kayıt Ol"} />
 				</Animated.View>
+
 				<Animated.View style={[styles.formContainer,formAnimatedStyle]}>
+
+
 					<TextInput 
 					placeholder="Email" 
 					style={styles.textInput} 
@@ -129,8 +137,12 @@ let navigation;
 					<Animated.View style={[styles.button,formBtnAnimatedStyle]} >
 						<StyledButton onPress={login} type="primary" content={isRegistering ? "Register" : "Log in"} />
 					</Animated.View>
+
 				</Animated.View>
+				
+				</KeyboardAvoidingView>
 			</View>
+
 		</View>
 	)
 };
