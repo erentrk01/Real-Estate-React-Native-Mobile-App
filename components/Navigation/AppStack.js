@@ -15,16 +15,18 @@ import Categories from "../Screens/Categories";
 import HouseItem from "../HouseItem";
 import Home from "../Screens/HomeScreen";
 import Favorites from "../Screens/Favorites";
+import AnimatedAuth from "../Animated-Auth";
 
 
 
 
 const Drawer = createDrawerNavigator();
+const user= true;
 
 
 const AppStack = () => {
 	return (
-
+			
 			<Drawer.Navigator
 			 screenOptions={{
 				headerShown:true,
@@ -34,14 +36,9 @@ const AppStack = () => {
          			 marginLeft: -20,
           			fontSize: 15, },
 				}} >
-				<Drawer.Screen 
-					name="Home"
-					component={Home}
-					options={{
-						drawerIcon: ({color}) => (
-							<Ionicons name="home-outline" size={22} color={color} />
-						)}}
-					/>
+				
+			{user ? (
+
 				<Drawer.Screen 
 					name="HouseList"
 					component={HouseList}
@@ -49,8 +46,8 @@ const AppStack = () => {
 						drawerIcon: ({color}) => (
 							<Ionicons name="home-outline" size={22} color={color} />
 						)}}
-					/>
-				<Drawer.Screen 
+					/>):
+				(<Drawer.Screen 
 					name="Detail" 
 					component={HouseDetails}
 					options={{
@@ -58,6 +55,8 @@ const AppStack = () => {
 							<Ionicons name="md-cellular" size={22} color={color} />
 						)}}
 					/>
+					
+					)}
 				<Drawer.Screen 
 					name="Profile" 
 					component={Profile}
@@ -84,9 +83,24 @@ const AppStack = () => {
 						}}
 					
 					/>
+					<Drawer.Screen 
+				name="AnimatedAuth"
+				component={AnimatedAuth}
+				options={{
+					drawerIcon: ({color}) => (
+						<Ionicons name="star" size={22} color={color} />),
+				}}
+					
+					/>
 
-
-						
+			<Drawer.Screen 
+					name="Home"
+					component={Home}
+					options={{
+						drawerIcon: ({color}) => (
+							<Ionicons name="home-outline" size={22} color={color} />
+						)}}
+					/>
 			</Drawer.Navigator>
 	  );
 }

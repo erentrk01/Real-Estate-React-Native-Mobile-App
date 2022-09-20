@@ -9,7 +9,11 @@ import CategoryStack from "./CategoryStack";
 const Stack = createNativeStackNavigator();
 
 const AuthStack = () => {
-
+	return (
+		<Stack.Navigator>
+			<Stack.Screen name="AnimatedAuth" component={AnimatedAuth} options={{headerShown: false}} />
+		</Stack.Navigator>
+	)
 }
-
+s
 export default AuthStack;
