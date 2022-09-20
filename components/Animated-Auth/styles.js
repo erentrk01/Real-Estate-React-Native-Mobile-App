@@ -11,6 +11,7 @@ const {width, height} = Dimensions.get('window');
 	bottomContainer:{
 		justifyContent:"center",
 		height:height/3,
+
 	},
 	button:{
 		marginBottom:10,
@@ -26,7 +27,7 @@ const {width, height} = Dimensions.get('window');
 		width:"90%",
 	},
 	formContainer:{
-		marginBottom:70,
+		marginBottom:10,
 		zIndex:-1,
 		...StyleSheet.absoluteFill,
 		justifyContent:"center"

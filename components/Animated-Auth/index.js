@@ -1,4 +1,4 @@
-import {KeyboardAvoidingView,Text,View,Dimensions, StyleSheet, TextInput } from "react-native";
+import {KeyboardAvoidingView,Text,View,Dimensions, StyleSheet, TextInput ,Platform} from "react-native";
 import { useState } from "react";
 import Svg,{Image,Ellipse,ClipPath} from "react-native-svg";
 import styles from "./styles";""
@@ -102,7 +102,7 @@ let navigation;
 
 			<View style={styles.bottomContainer}>
 				<KeyboardAvoidingView 
-				behavior="position"
+				behavior={Platform.OS === "ios" ? "padding" : "height"}
 				
 				>
 				<Animated.View style={[styles.button,buttonAnimatedStyle]}>
