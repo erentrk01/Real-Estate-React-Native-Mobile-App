@@ -16,9 +16,9 @@ export default function App() {
 	console.log(houses);
 	React.useEffect(() => 
 		// listen real-time updates
-		onSnapshot(collection(db, 'houses'), (snapshot) => {
+		onSnapshot(collection(db, 'Houses'), (snapshot) => {
 		setHouses(snapshot.docs.map(doc => doc.data()));
-		})) 
+		}),[]) 
   return (
 	<NavigationContainer >
 		<AppStack/>
