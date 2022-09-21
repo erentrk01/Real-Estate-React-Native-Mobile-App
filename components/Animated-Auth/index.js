@@ -5,6 +5,8 @@ import styles from "./styles";""
 import StyledButton from "../../common/StyledButton";
 import Animated,{useSharedValue,useAnimatedStyle,interpolate,withTiming,withDelay,runOnJS,withSequence,withSpring}from "react-native-reanimated";
 
+import { authentication } from './Firebase/firebase';
+
 let navigation;
 
 
@@ -17,6 +19,7 @@ let navigation;
 	const [isRegistering,setIsRegistering] = useState(false);
 	const [isLoggingIn,setIsLoggingIn] = useState(false);
 
+	// animation settings
 	const formBtnScale = useSharedValue(1);
 	const imagePosition = useSharedValue(1);
 	const imageAnimatedStyle = useAnimatedStyle(() => {
@@ -70,6 +73,7 @@ let navigation;
 
 	const registerHandler = () => {
 		imagePosition.value = 0;
+		
 		if(!isRegistering){
 			runOnJS(setIsRegistering)(true);
 		}
