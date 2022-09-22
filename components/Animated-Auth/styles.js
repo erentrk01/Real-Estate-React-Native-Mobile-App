@@ -17,7 +17,7 @@ const {width, height} = Dimensions.get('window');
 		marginBottom:10,
 	},
 	textInput:{
-		height:50,
+		height:35,
 		borderWidth:1,
 		borderColor:'rgba(0,0,0,0.2)',
 		borderRadius:25,
@@ -27,7 +27,7 @@ const {width, height} = Dimensions.get('window');
 		width:"90%",
 	},
 	formContainer:{
-		marginBottom:10,
+		marginBottom:0,
 		zIndex:-1,
 		...StyleSheet.absoluteFill,
 		justifyContent:"center"

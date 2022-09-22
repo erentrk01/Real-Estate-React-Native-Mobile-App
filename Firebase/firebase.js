@@ -25,4 +25,4 @@ const app = initializeApp(firebaseConfig);
 
 export const authentication = getAuth(app);
 
-export default getFirestore();
+export default getFirestore(app);

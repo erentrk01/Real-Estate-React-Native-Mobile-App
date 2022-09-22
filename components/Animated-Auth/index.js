@@ -5,19 +5,57 @@ import styles from "./styles";""
 import StyledButton from "../../common/StyledButton";
 import Animated,{useSharedValue,useAnimatedStyle,interpolate,withTiming,withDelay,runOnJS,withSequence,withSpring}from "react-native-reanimated";
 
-import { authentication } from './Firebase/firebase';
+import { authentication } from '../../Firebase/firebase';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import {signInWithEmailAndPassword,signOut} from "firebase/auth";
+
 
 let navigation;
 
 
  const AnimatedAuth = (props) => {
+	const[isSignedIn,setIsSignedIn]=useState(false);
+	const[registerEmail,setRegisterEmail] = useState("");
+	const[registerPassword,setRegisterPassword] = useState("");
+	const[loginEmail,setloginEmail] = useState("");
+	const[loginPassword,setloginPassword] = useState("");
 	const {height,width} = Dimensions.get('window');
-	const login = () => {
-		formBtnScale.value = withSequence(withSpring(1.1),withSpring(1.3),withSpring(1));
-		props.navigation.navigate('HouseList')};
 
 	const [isRegistering,setIsRegistering] = useState(false);
 	const [isLoggingIn,setIsLoggingIn] = useState(false);
+	const [error,setError] = useState("");
+
+	const signInUser =()=>{
+		signInWithEmailAndPassword(authentication,loginEmail,loginPassword)
+		.then((re)=>{
+			setIsSignedIn(true );
+			console.log(re);
+			
+		})
+		.catch((error)=>{
+			setError(error +"hata");
+			console.log(error);
+		})
+	}
+
+	const signOutUser =()=>{
+		signOut(authentication)
+		.then((re)=>{
+			setIsSignedIn(false);
+			console.log(re);
+		})
+		.catch((err)=>{
+			setError(err);
+			console.log(err);
+		})
+	}
+
+	const login = () => {
+		isRegistering ? register() : signInUser();
+		if(error !== ""){
+		formBtnScale.value = withSequence(withSpring(1.1),withSpring(1.3),withSpring(1));
+		props.navigation.navigate('HouseList')}};
+
 
 	// animation settings
 	const formBtnScale = useSharedValue(1);
@@ -64,6 +102,9 @@ let navigation;
 			transform:[{scale:formBtnScale.value}]
 		}
 	});
+
+		//Form handlers
+
 	const loginHandler = () => {
 		imagePosition.value = 0;
 		if(isRegistering){
@@ -73,14 +114,31 @@ let navigation;
 
 	const registerHandler = () => {
 		imagePosition.value = 0;
-		
 		if(!isRegistering){
 			runOnJS(setIsRegistering)(true);
 		}
 
+
 	};
 
+	const register = ()=>{
 
+		 createUserWithEmailAndPassword(authentication, registerEmail, registerPassword)
+		.then((re) => {
+			setIsSignedIn(true);
+			console.log(re);
+		})
+		.catch((re)=>{
+			setError("hata");
+			console.log(re);
+		})
+
+
+
+
+	}
+
+	
 	return(
 //<StyledButton onPress={()=>navigation.navigate('AnimatedAuth')} type="primary" content={"Giriş Yap"} />
 		<View style={styles.container}>
@@ -120,14 +178,16 @@ let navigation;
 
 				<Animated.View style={[styles.formContainer,formAnimatedStyle]}>
 
-
+					{error === "" ? <Text>{error}</Text>:""}
 					<TextInput 
+					autoFocus 
+					required 
+					onChangeText={text=> setRegisterEmail(text)}
 					placeholder="Email" 
 					style={styles.textInput} 
 					placeholderTextColor={"black"}
 					
 					/>
-
 					{ isRegistering &&
 					<TextInput 
 					style={styles.textInput}
@@ -135,6 +195,10 @@ let navigation;
 					placeholderTextColor={"black"}/>}
 
 					<TextInput 
+					secureTextEntry={true}
+					autoFocus 
+					required 
+					onChangeText={text=>setRegisterPassword(text)}
 					style={styles.textInput}
 					placeholder="Password" 
 					placeholderTextColor={"black"}/>
