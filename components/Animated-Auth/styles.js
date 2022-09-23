@@ -50,6 +50,11 @@ const {width, height} = Dimensions.get('window');
 		alignItems:"center",
 		borderRadius:20
 
+	},
+	error:{
+		textAlign:"center",
+		color:"red",
+		
 	}
 	
  })

@@ -1,19 +1,21 @@
 import {KeyboardAvoidingView,Text,View,Dimensions, StyleSheet, TextInput ,Platform} from "react-native";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Svg,{Image,Ellipse,ClipPath} from "react-native-svg";
 import styles from "./styles";""
 import StyledButton from "../../common/StyledButton";
 import Animated,{useSharedValue,useAnimatedStyle,interpolate,withTiming,withDelay,runOnJS,withSequence,withSpring}from "react-native-reanimated";
 
-import { authentication } from '../../Firebase/firebase';
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import {signInWithEmailAndPassword,signOut} from "firebase/auth";
+import {firebase} from "../../Firebase/firebase";
+
 
 
 let navigation;
 
 
  const AnimatedAuth = (props) => {
+	const[initializing,setInitializing] = useState(true);
+	const[user,setUser] = useState();
+
 	const[isSignedIn,setIsSignedIn]=useState(false);
 	const[registerEmail,setRegisterEmail] = useState("");
 	const[registerPassword,setRegisterPassword] = useState("");
@@ -21,21 +23,18 @@ let navigation;
 	const[loginPassword,setloginPassword] = useState("");
 	const {height,width} = Dimensions.get('window');
 
+	const[name,setName] = useState("");
+
 	const [isRegistering,setIsRegistering] = useState(false);
 	const [isLoggingIn,setIsLoggingIn] = useState(false);
 	const [error,setError] = useState("");
 
-	const signInUser =()=>{
-		signInWithEmailAndPassword(authentication,loginEmail,loginPassword)
-		.then((re)=>{
-			setIsSignedIn(true );
-			console.log(re);
-			
-		})
-		.catch((error)=>{
-			setError(error +"hata");
-			console.log(error);
-		})
+	const signInUser =async()=>{
+		try {
+			await firebase.auth().signInWithEmailAndPassword(loginEmail,loginPassword);
+		} catch (error) {
+			alert(error.message);
+		}
 	}
 
 	const signOutUser =()=>{
@@ -45,16 +44,23 @@ let navigation;
 			console.log(re);
 		})
 		.catch((err)=>{
-			setError(err);
+			setError("hata");
 			console.log(err);
 		})
 	}
 
-	const login = () => {
-		isRegistering ? register() : signInUser();
-		if(error !== ""){
+	const login = async() => {
+		isRegistering ? register(registerEmail,registerPassword) : signInUser();
 		formBtnScale.value = withSequence(withSpring(1.1),withSpring(1.3),withSpring(1));
-		props.navigation.navigate('HouseList')}};
+
+		if(error !=="hata" && user ){
+		props.navigation.navigate('HouseList')};
+
+	if(error==="hata"){
+		setError("");
+	}
+
+	}
 
 
 	// animation settings
@@ -121,22 +127,49 @@ let navigation;
 
 	};
 
-	const register = ()=>{
+	const register = async(email,passw)=>{
 
-		 createUserWithEmailAndPassword(authentication, registerEmail, registerPassword)
-		.then((re) => {
-			setIsSignedIn(true);
-			console.log(re);
-		})
-		.catch((re)=>{
-			setError("hata");
-			console.log(re);
-		})
+	
+			firebase.auth().createUserWithEmailAndPassword(email,passw)
+			.then((re)=>{
+				firebase.auth().currentUser.sendEmailVerification({
+					handleCodeInApp:true,
+					url:"https://realestate-a31db.firebaseapp.com"
+				})
+				.then(()=>{
+					alert('Verification email sent');
+				})
+				.catch((err)=>{
+					alert(err.message);
+				})
+				.then(()=>{
+					console.log(registerEmail);
+					console.log(name);
+					firebase.firestore().collection('Users').doc(firebase.auth().currentUser.uid).set({registerEmail,name})
+				})
+				.catch((err)=>{
+					alert(err.message);
+				})
+			})
+			.catch((err)=>{
+				alert(err.message);
+			})
 
 
 
 
 	}
+
+		// Handle User State Changes
+		function onAuthStateChanged(user) {
+			setUser(user);
+			if (initializing) setInitializing(false);
+		}
+	
+	useEffect(() => {
+		const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged);
+		return subscriber; // unsubscribe on unmount
+	},[])
 
 	
 	return(
@@ -178,7 +211,7 @@ let navigation;
 
 				<Animated.View style={[styles.formContainer,formAnimatedStyle]}>
 
-					{error === "" ? <Text>{error}</Text>:""}
+					{error === "hata" ? <Text style={styles.error}>{error}</Text>:""}
 					<TextInput 
 					autoFocus 
 					required 
@@ -190,6 +223,8 @@ let navigation;
 					/>
 					{ isRegistering &&
 					<TextInput 
+					required
+					onChangeText={text=>{setName(text)}}
 					style={styles.textInput}
 					placeholder="Full Name" 
 					placeholderTextColor={"black"}/>}
