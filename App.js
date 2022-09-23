@@ -1,8 +1,8 @@
 
-import db from './Firebase/firebase';
-import {collection, onSnapshot} from 'firebase/firestore';
+import firebase from './Firebase/firebase';
+
 import { StyleSheet, Text, View } from 'react-native';
-import * as React from 'react';
+import  React,{useEffect,useState} from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 import AppStack from './components/Navigation/AppStack';
@@ -12,16 +12,26 @@ const Stack = createNativeStackNavigator();
 
 
 export default function App() {
-	const [houses, setHouses] = React.useState([]);
+	const [houses, setHouses] = useState([]);
+	const[initializing,setInitializing] = useState(true);
+	const[user,setUser] = useState();
+
+	// Handle User State Changes
+	function onAuthStateChanged(user) {
+		setUser(user);
+		if (initializing) setInitializing(false);
+	}
+
 	console.log(houses);
-	React.useEffect(() => 
-		// listen real-time updates
-		onSnapshot(collection(db, 'Houses'), (snapshot) => {
-		setHouses(snapshot.docs.map(doc => doc.data()));
-		}),[]) 
+
+	useEffect(() => {
+		const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged);
+		return subscriber; // unsubscribe on unmount
+	},[])
+
   return (
 	<NavigationContainer >
-		<AppStack/>
+		<AppStack user={user}/>
 	</NavigationContainer>
 	
 	

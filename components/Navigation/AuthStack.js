@@ -8,7 +8,7 @@ import CategoryStack from "./CategoryStack";
 
 const Stack = createNativeStackNavigator();
 
-const AuthStack = () => {
+const AuthStack = ({user}) => {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen name="AnimatedAuth" component={AnimatedAuth} options={{headerShown: false}} />
