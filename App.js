@@ -1,5 +1,5 @@
 
-import firebase from './Firebase/firebase';
+import {firebase} from './Firebase/firebase';
 
 import { StyleSheet, Text, View } from 'react-native';
 import  React,{useEffect,useState} from 'react';

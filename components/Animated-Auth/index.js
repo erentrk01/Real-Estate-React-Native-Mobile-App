@@ -160,16 +160,6 @@ let navigation;
 
 	}
 
-		// Handle User State Changes
-		function onAuthStateChanged(user) {
-			setUser(user);
-			if (initializing) setInitializing(false);
-		}
-	
-	useEffect(() => {
-		const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged);
-		return subscriber; // unsubscribe on unmount
-	},[])
 
 	
 	return(
@@ -215,7 +205,7 @@ let navigation;
 					<TextInput 
 					autoFocus 
 					required 
-					onChangeText={text=> setRegisterEmail(text)}
+					onChangeText={text=> isRegistering ? setRegisterEmail(text) : setloginEmail(text)}
 					placeholder="Email" 
 					style={styles.textInput} 
 					placeholderTextColor={"black"}
@@ -233,7 +223,7 @@ let navigation;
 					secureTextEntry={true}
 					autoFocus 
 					required 
-					onChangeText={text=>setRegisterPassword(text)}
+					onChangeText={text=>isRegistering ? setRegisterPassword(text):setloginPassword(text)}
 					style={styles.textInput}
 					placeholder="Password" 
 					placeholderTextColor={"black"}/>

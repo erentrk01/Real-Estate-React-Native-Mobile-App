@@ -82,6 +82,16 @@ const AppStack = ({user}) => {
 						}}
 					
 					/>
+					<Drawer.Screen 
+					name="LogOut" 
+					component={AnimatedAuth}
+					options={{
+						drawerIcon: ({color}) => (
+							<Ionicons name="exit-outline" size={22} color={color} />),
+						}}
+					
+					/>
+					
 					</>
 					):
 				(
