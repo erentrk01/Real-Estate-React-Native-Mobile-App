@@ -1,11 +1,13 @@
 import React,{ useState } from "react";
-import { View,Text,FlatList,TouchableOpacity} from "react-native";
+import { View,Text,FlatList,TouchableOpacity, ImagePickerIOS} from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import CategoryTemplate from "../../../common/CategoryTemplate";
 
 import { NavigationContainer } from '@react-navigation/native';
 import styles from "./styles";
 import { useNavigation } from '@react-navigation/native';
+import * as ImagePicker from 'expo-image-picker';
+import StyledButton from "../../../common/StyledButton";
 
 const PutUpForSale = () => {
 	const navigation = useNavigation();
@@ -20,8 +22,26 @@ const PutUpForSale = () => {
 
 const [categoryMain,setCategoryMain]= useState(initCategories);
 const [subArray,setSubArray]=useState([]);
-	
+const [images,setImages]=useState([]);
+const[isLoading,setIsLoading]=useState(false);
 
+const pickImages = async()=>{
+	setIsLoading(true);
+	let result = await ImagePicker.launchImageLibraryAsync({
+		mediaTypes: ImagePicker.MediaTypeOptions.Images,
+		allowsMultipleSelection:true,
+		selectionLimit:10,
+		aspect:[4,3],
+		quality:1
+	});
+
+	setIsLoading(false);
+
+	if(!result.cancelled){
+		setImages(result.uri ? [result.uri]:result.selected);
+	}
+
+}
 	return(
 
 		<View>
@@ -39,6 +59,7 @@ const [subArray,setSubArray]=useState([]);
 
 		
 		</View>
+		<StyledButton onPress={pickImages} content="Pick Images"/>
 		</View>
 		
 	)
