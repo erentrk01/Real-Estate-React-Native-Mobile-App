@@ -30,7 +30,7 @@ export default function App() {
 	console.log(houses);
 
 	useEffect(() => {
-	
+
 		const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged);
 		return subscriber; // unsubscribe on unmount
 	},[])
