@@ -7,7 +7,8 @@ import Animated,{useSharedValue,useAnimatedStyle,interpolate,withTiming,withDela
 
 import {firebase} from "../../Firebase/firebase";
 
-
+import { useSelector,useDispatch } from "react-redux";
+import { KeepUser } from "../../Store/reducers";
 
 let navigation;
 
@@ -15,6 +16,8 @@ let navigation;
  const AnimatedAuth = (props) => {
 	const[initializing,setInitializing] = useState(true);
 	const[user,setUser] = useState();
+	const usr =  useSelector(state=>state.verified);
+	const dispatch = useDispatch();
 
 	const[isSignedIn,setIsSignedIn]=useState(false);
 	const[registerEmail,setRegisterEmail] = useState("");
@@ -24,15 +27,18 @@ let navigation;
 	const {height,width} = Dimensions.get('window');
 
 	const[name,setName] = useState("");
+	const[username,setUsername] = useState("");
 
 	const [isRegistering,setIsRegistering] = useState(false);
 	const [isLoggingIn,setIsLoggingIn] = useState(false);
 	const [error,setError] = useState("");
 
-	const signInUser =async()=>{
+	const signInUser =async(loginEmail,loginPassword)=>{
 		try {
 			await firebase.auth().signInWithEmailAndPassword(loginEmail,loginPassword);
+			dispatch(KeepUser());
 		} catch (error) {
+			setError("hata");
 			alert(error.message);
 		}
 	}
@@ -49,12 +55,16 @@ let navigation;
 		})
 	}
 
-	const login = async() => {
-		isRegistering ? register(registerEmail,registerPassword) : signInUser();
+	const login = () => {
+		isRegistering ? register(registerEmail,registerPassword) : signInUser(loginEmail,loginPassword);
 		formBtnScale.value = withSequence(withSpring(1.1),withSpring(1.3),withSpring(1));
-
+		if(! firebase.auth().currentUser) return;
+		
+		firebase.auth().currentUser.reload();
+		dispatch(KeepUser());
 		if(error !=="hata" && user ){
-		props.navigation.navigate('HouseList')};
+			props.navigation.navigate('HouseList')};
+	
 
 	if(error==="hata"){
 		setError("");
@@ -126,6 +136,19 @@ let navigation;
 
 
 	};
+	const logOutHandler = () => {
+		firebase.auth().signOut();	
+		//imagePosition.value = 0;
+		if(!isRegistering){
+			runOnJS(setIsRegistering)(false);
+		}
+		if(isLoggingIn){
+			runOnJS(setIsLoggingIn)(false);
+		}
+
+
+	};
+	
 
 	const register = async(email,passw)=>{
 
@@ -160,6 +183,26 @@ let navigation;
 
 	}
 
+	useEffect(() => {
+		if(!firebase.auth().currentUser) return;
+		if(!firebase.auth().currentUser.uid) return;
+	
+	
+		const val =firebase.firestore().collection('Users').doc(firebase.auth().currentUser.uid);
+
+		if(!val) return;
+
+		val.get().then((snapshot)=>{
+			if(snapshot.exists) setUsername(snapshot.data().name);
+			else console.log('no data');
+
+		})
+		.catch(
+			(err)=>{
+			console.log(err);
+			})
+	},[])
+
 
 	
 	return(
@@ -190,7 +233,10 @@ let navigation;
 				behavior={Platform.OS === "ios" ? "padding" : "height"}
 				
 				>
-				<Animated.View style={[styles.button,buttonAnimatedStyle]}>
+				{username === "" ? 
+					(
+					<>
+					<Animated.View style={[styles.button,buttonAnimatedStyle]}>
 				<StyledButton  onPress={loginHandler} type="secondary" content={"Giriş Yap"} />
 
 				</Animated.View>
@@ -198,8 +244,19 @@ let navigation;
 
 					<StyledButton onPress={registerHandler} type="secondary" content={"Kayıt Ol"} />
 				</Animated.View>
+					</>
+				) : ( 
+					<Animated.View style={[styles.button,buttonAnimatedStyle]} >
+
+					<StyledButton onPress={logOutHandler} type="secondary" content={"Log Out"} />
+				</Animated.View>
+				)
+					
+				}
+				
 
 				<Animated.View style={[styles.formContainer,formAnimatedStyle]}>
+					{username !== "" ? <Text>Welcome, {username}</Text>:""}
 
 					{error === "hata" ? <Text style={styles.error}>{error}</Text>:""}
 					<TextInput 

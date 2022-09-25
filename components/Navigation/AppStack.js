@@ -1,6 +1,6 @@
-import React from "react";
+import React ,{useEffect, useState}from "react";
 import { View, Text} from "react-native";
-
+import {firebase} from '../../Firebase/firebase';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -17,15 +17,26 @@ import Home from "../Screens/HomeScreen";
 import Favorites from "../Screens/Favorites";
 import AnimatedAuth from "../Animated-Auth";
 
+import {DevSettings} from 'react-native';
+import { useSelector,useDispatch } from "react-redux";
 
-
-
+import { KeepUser } from "../../Store/reducers";
 
 const Drawer = createDrawerNavigator();
 
 
 
 const AppStack = ({user}) => {
+	const verified = useSelector(state=>state.userKeeper.verified);
+	const dispatch = useDispatch();
+	firebase.auth()?.currentUser?.reload();
+
+	
+	
+	useEffect(()=>{
+		dispatch(KeepUser());
+		console.log(verified +"verified sta")
+	},[verified])
 	return (
 			
 			<Drawer.Navigator
@@ -38,7 +49,9 @@ const AppStack = ({user}) => {
           			fontSize: 15, },
 				}} >
 				
-			{user ? (
+				
+			{(user && verified)  ? (
+				
 				<>
 				<Drawer.Screen 
 					name="HouseList"
