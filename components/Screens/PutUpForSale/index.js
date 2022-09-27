@@ -35,18 +35,18 @@ const pickImages = async()=>{
 		aspect:[4,3],
 		quality:1
 	});
-
+	setImages(result);
 	setIsLoading(false);
 
-	if(!result.cancelled){
-		setImages(result.uri ? [result.uri]:result.selected);
+	//if(!result.cancelled){
+		//setImages(result.uri ? [result.uri]:result.selected);
 		uploadImages();
-	}
+	//}
 }
 
 const uploadImages = async () => {
 	setIsLoading(true);
-	try{
+	try{console.log(images)
 		let modifiedArr = images.map((element)=>{
 			const reference = storage().ref(`MyImages/${element.name}`);
 			const task = reference.putFile(element.fileCopyUri.replace("file://",""));
@@ -71,6 +71,8 @@ const uploadImages = async () => {
 	setIsLoading(false);
 
 }
+
+
 	return(
 
 		<View>
