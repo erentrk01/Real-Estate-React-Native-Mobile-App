@@ -3,6 +3,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,6 +18,7 @@ const firebaseConfig = {
   appId: "1:959966449167:web:ae6788807e23df9c191d7a",
   measurementId: "G-XY9JFEWF68"
 };
+
 
 if(!firebase.apps.length){
   firebase.initializeApp(firebaseConfig);

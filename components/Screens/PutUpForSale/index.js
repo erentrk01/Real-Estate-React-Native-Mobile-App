@@ -35,21 +35,23 @@ const pickImages = async()=>{
 		aspect:[4,3],
 		quality:1
 	});
-	setImages(result);
+	//setImages(result);
+	
 	setIsLoading(false);
 
-	//if(!result.cancelled){
-		//setImages(result.uri ? [result.uri]:result.selected);
-		uploadImages();
-	//}
+	if(!result.cancelled){
+		setImages(result.uri ? [result.uri]:result.selected);
+		uploadImages(images);
+	}
 }
 
-const uploadImages = async () => {
+const uploadImages = async (images) => {
 	setIsLoading(true);
 	try{console.log(images)
-		let modifiedArr = images.map((element)=>{
-			const reference = storage().ref(`MyImages/${element.name}`);
-			const task = reference.putFile(element.fileCopyUri.replace("file://",""));
+		images.map(async (element)=>{
+			console.log(element)		
+			const reference = storage().ref(`/MyImages/${element.uri}`);
+			const task = reference.putFile(element.uri.replace("file://",""));
 			task.on('state_changed',taskSnapshot=>{
 				setProcess(`
 				${taskSnapshot.bytesTransferred} transferred out of ${taskSnapshot.totalBytes}
@@ -60,9 +62,7 @@ const uploadImages = async () => {
 			alert('uploaded ');
 			setProcess('');
 		})
-
-		setImages([]);
-
+		
 		})
 	}
 	catch(err){
