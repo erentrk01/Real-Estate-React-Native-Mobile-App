@@ -21,6 +21,8 @@ import {DevSettings} from 'react-native';
 import { useSelector,useDispatch } from "react-redux";
 
 import { KeepUser } from "../../Store/reducers";
+import ProfileStack from "./ProfileStack";
+import EditProfile from "../Screens/EditProfile";
 
 const Drawer = createDrawerNavigator();
 
@@ -104,6 +106,18 @@ const AppStack = ({user}) => {
 						}}
 					
 					/>
+
+			<Drawer.Screen 
+			name="EditProfile" 
+			component={EditProfile}
+			options={{
+						drawerIcon: ({color}) => (
+							<Ionicons name="exit-outline" size={22} color={color} />),
+						}}
+			headerTitleAlign="center"
+			headerStyle={{shadowColor:'#fff',elevation:0}}
+			/>
+					
 					
 					</>
 					):

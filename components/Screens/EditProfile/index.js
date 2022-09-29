@@ -1,23 +1,28 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { View, Text, Image } from 'react-native'
+import React, { useState } from 'react'
 
-import {
-	View,
-	Text,
-	TouchableOpacity,
-	ImageBackground,
-	TextInput,
-	StyleSheet,
-	Alert,
-  } from 'react-native';
 
-const index = () => {
+const EditProfile= () => {
+	const [image, setImage] = useState(null);
+	const [uploading, setUploading] = useState(false);
+	const [transferred, setTransferred] = useState(0);
+	const [userData, setUserData] = useState(null);
+
+	const getUser = async () => {
+
+		}
+
+	const handleUpdate = async() => {
+
+	}
+  
   return (
 	<View>
-	  <Text>index</Text>
+	<Text>EDit</Text>
+
 	</View>
+
   )
 }
 
-export default index
-
-const styles = StyleSheet.create({})
+export default EditProfile;

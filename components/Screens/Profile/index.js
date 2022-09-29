@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { View,Text,ScrollView,Image, TouchableOpacity, SafeAreaView,} from "react-native";
 import styles from "./styles";
+import { useNavigation } from '@react-navigation/native';
 
 const Profile = () => {
+	const navigation =useNavigation();
 	const[posts,setPosts] = useState([]);
 	const [loading, setLoading] = useState(true);
   	const [deleted, setDeleted] = useState(false);
@@ -40,7 +42,9 @@ const Profile = () => {
 				  }}>
 				  <Text style={styles.userBtnTxt}>Edit</Text>
 				</TouchableOpacity>
-				<TouchableOpacity style={styles.userBtn} onPress={() => logout()}>
+				<TouchableOpacity style={styles.userBtn}  onPress={() => {
+					navigation.navigate('LogOut');
+				  }}>
 				  <Text style={styles.userBtnTxt}>Logout</Text>
 				</TouchableOpacity>
 			  </>
